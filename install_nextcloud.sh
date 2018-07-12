@@ -1,5 +1,4 @@
 #!/bin/bash
-
 mkdir -p ~/nextcloud/www
 mkdir -p ~/nextcloud/log
 mkdir -p ~/nextcloud/apps
@@ -10,12 +9,12 @@ mkdir -p ~/nextcloud/mysql
 sudo docker run -i -t -d -p 3306:3306 \
     --name="nc-mysql" \
     --net="bridge" \
-    -e MYSQL_ROOT_PASSWORD=YourPassword \
+    -e MYSQL_ROOT_PASSWORD=123 \
     -v ~/nextcloud/mysql:/var/lib/mysql \
     -v ~/nextcloud/log:/var/log \
     mysql:5.7
 
-sudo docker run -i -t -d -p 80:80 -p 443:443  \
+sudo docker run -i -t -d -p 8080:80 \
     --name="nc" \
     --net="bridge" \
     --link="nc-mysql" \
@@ -25,4 +24,5 @@ sudo docker run -i -t -d -p 80:80 -p 443:443  \
     -v ~/nextcloud/data:/var/www/html/data \
     -v ~/nextcloud/log:/var/log \
     nextcloud
+    
 # nextcloud db connect info: mysql-host = nc-mysql , mysql-port = 3306 , mysql-user = root , mysql-password = YourPassword
