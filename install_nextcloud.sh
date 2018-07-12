@@ -23,6 +23,6 @@ sudo docker run -i -t -d -p 8080:80 \
     -v ~/nextcloud/config:/var/www/html/config \
     -v ~/nextcloud/data:/var/www/html/data \
     -v ~/nextcloud/log:/var/log \
-    nextcloud
+    nextcloud:13.0.4-apache
     
 # nextcloud db connect info: mysql-host = nc-mysql , mysql-port = 3306 , mysql-user = root , mysql-password = YourPassword
